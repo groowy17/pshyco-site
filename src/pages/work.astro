@@ -1,0 +1,107 @@
+---
+import { getCollection } from 'astro:content';
+import ContactCTA from '../components/ContactCTA.astro';
+import Hero from '../components/Hero.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const projects = (await getCollection('work')).sort(
+	(a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
+);
+---
+
+<BaseLayout
+	title="О работе | Дарья Земскова"
+	description="Узнайте о моих методах консультирования"
+>
+	<div class="stack gap-20">
+		<main class="wrapper stack work gap-8">
+			<Hero
+				title="О работе"
+				tagline="Узнайте о моих методах консультирования"
+				align="start"
+			/>
+			<section>
+				<div class="content">
+
+					<p class="list-title">Принципы, которых я придерживаюсь в работе:</p>
+					<ul>
+						<li>Бережное и безоценочное принятие личности</li>
+						<li>Соблюдение этических норм психологического сопровождения</li>
+						<li>Гарантия конфиденциальности</li>
+						<li>Постоянное развитие профессиональных навыков</li>
+					</ul>
+
+					<p>Я нахожусь в длительной личной терапии на протяжении 4 лет и работаю под супервизией.</p>
+
+					<p class="list-title">Запросы, с которыми я могу помочь:</p>
+					<ul>
+						<li>Ощущения бессилия, потерянности, апатии</li>
+						<li>Сниженная самооценка</li>
+						<li>Сложности в общении с другими людьми</li>
+						<li>Выход из сложных отношений и восстановление после них</li>
+						<li>Неконтролируемые эмоции: гнев, обида, чувство вины или стыда</li>
+						<li>Эмоциональное выгорание</li>
+						<li>Борьба с тревогой</li>
+					</ul>
+				</div>
+			</section>
+		</main>
+		<ContactCTA />
+	</div>
+</BaseLayout>
+
+<style>
+	.work {
+		display: flex;
+		flex-direction: column;
+		gap: 3.5rem;
+	}
+
+	img {
+		margin-top: 1.5rem;
+		border-radius: 1.5rem;
+		box-shadow: var(--shadow-md);
+	}
+
+	section {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		color: var(--gray-200);
+	}
+
+	ul {
+		margin-top: 0.5rem;
+	}
+
+	ul + p,
+	p + .list-title {
+		margin-top: 1rem;
+	}
+
+	.section-title {
+		grid-column-start: 1;
+		font-size: var(--text-xl);
+		color: var(--gray-0);
+	}
+
+	.content {
+		grid-column: 2 / 4;
+	}
+
+	@media (min-width: 50em) {
+		.work {
+			display: grid;
+			grid-template-columns: 1fr 60% 1fr;
+		}
+
+		.work > :global(:first-child) {
+			grid-column-start: 2;
+		}
+
+		section {
+			display: contents;
+			font-size: var(--text-lg);
+		}
+	}
+</style>
