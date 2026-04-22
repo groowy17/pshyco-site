@@ -1,12 +1,21 @@
 ---
-import {CV_DATA} from '../data/cv';
+import type {CV} from "../data/cv.types";
 import WorkItem from "./WorkItem.astro";
 
-const {work} = CV_DATA;
+interface Props {
+  cv: CV;
+}
+
+const {cv} = Astro.props;
+const {work, ui} = cv;
 ---
 <section class="flex min-h-0 flex-col gap-y-3 print:gap-y-1">
-    <h2 class="text-xl font-bold" id="work-experience">Work Experience</h2>
+    <h2 class="text-xl font-bold" id="work-experience">{ui.sectionWork}</h2>
     {work.map((item) => (
-            <WorkItem {...item}/>
+            <WorkItem
+                {...item}
+                presentLabel={ui.present}
+                employmentPeriodLabel={ui.employmentPeriodLabel}
+            />
     ))}
 </section>

@@ -1,11 +1,16 @@
 ---
-import {CV_DATA} from "../data/cv";
+import type {CV} from "../data/cv.types";
 import EducationItem from "./EducationItem.astro";
 
-const {education} = CV_DATA;
+interface Props {
+  cv: CV;
+}
+
+const {cv} = Astro.props;
+const {education, ui} = cv;
 ---
 <section class="flex min-h-0 flex-col gap-y-3 print:gap-y-1">
-    <h2 class="text-xl font-bold" id="education-section">Education</h2>
+    <h2 class="text-xl font-bold" id="education-section">{ui.sectionEducation}</h2>
     <div class="space-y-4" role="feed" aria-labelledby="education-section">
         {education.map((entry) => (
                 <EducationItem {...entry}/>

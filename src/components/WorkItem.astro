@@ -1,11 +1,14 @@
 ---
-import Badge from "./common/Badge.astro";
-import type {Work} from "../data/cv";
+import type {Work} from "../data/cv.types";
 
 interface Props extends Work {
+  presentLabel: string;
+  employmentPeriodLabel: string;
 }
 
-const {company, title, start, end, achievements} = Astro.props
+const {company, title, start, end, achievements, presentLabel, employmentPeriodLabel} =
+  Astro.props;
+const endDisplay = end ?? presentLabel;
 ---
 <article role="article">
     <div class="rounded-lg bg-card text-card-foreground py-1 print:py-0">
@@ -15,8 +18,8 @@ const {company, title, start, end, achievements} = Astro.props
                     <span>{company}</span>
                 </h3>
                 <div class="text-sm tabular-nums text-gray-500"
-                     aria-label=`Employment period: ${start} to ${end ?? 'Present'}`>
-                    {start} - {end ?? 'Present'}
+                     aria-label={`${employmentPeriodLabel}: ${start} — ${endDisplay}`}>
+                    {start} - {endDisplay}
                 </div>
             </div>
             <h4 class="font-mono text-sm font-semibold leading-none flex flex-col space-y-1.5 print:text-[12px]">

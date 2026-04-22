@@ -1,0 +1,31 @@
+---
+import type {CV} from "../data/cv.types";
+import Layout from "../layouts/Layout.astro";
+import Header from "./Header.astro";
+import Summary from "./Summary.astro";
+import WorkExperience from "./WorkExperience.astro";
+import Education from "./Education.astro";
+import Skills from "./Skills.astro";
+import PrintInstruction from "./PrintInstruction.astro";
+
+interface Props {
+  cv: CV;
+}
+
+const {cv} = Astro.props;
+const {name, about} = cv;
+---
+<Layout title={`${name} | ${cv.ui.titleSuffix}`} description={about} lang={cv.ui.htmlLang}>
+    <main class="container relative mx-auto scroll-my-12 overflow-auto p-4 print:p-11 md:p-16" id="main-content">
+        <section class="mx-auto w-full max-w-2xl space-y-8 bg-white print:space-y-4" aria-label={cv.ui.mainAriaLabel}>
+            <Header cv={cv}/>
+            <div class="space-y-8 print:space-y-4">
+                <Summary cv={cv}/>
+                <WorkExperience cv={cv}/>
+                <Education cv={cv}/>
+                <Skills cv={cv}/>
+            </div>
+        </section>
+        <PrintInstruction printBefore={cv.ui.printBefore} printAfter={cv.ui.printAfter}/>
+    </main>
+</Layout>

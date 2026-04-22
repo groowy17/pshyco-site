@@ -1,41 +1,13 @@
-export interface CV {
-  name: string;
-  title: string;
-  location: string;
-  locationLink: string;
-  about: string;
-  summary: string;
-  contact: Contact;
-  work: Work[];
-  education: Education[];
-  skills: string[];
-}
+import type {CV} from "./cv.types";
 
-export interface Contact {
-  email: string;
-  tel: string;
-  social: Social[];
-}
-
-export interface Social {
-  name: string;
-  url: string;
-}
-
-export interface Work {
-  company: string;
-  title: string;
-  start: string;
-  end: string | null;
-  achievements?: string[];
-}
-
-export interface Education {
-  school: string;
-  degree: string;
-  start: string;
-  end: string | null;
-}
+export type {
+  CV,
+  CVUi,
+  Contact,
+  Education,
+  Social,
+  Work,
+} from "./cv.types";
 
 export const CV_DATA: CV = {
   name: "Elena Makueva",
@@ -69,7 +41,7 @@ export const CV_DATA: CV = {
       company: "Proptech solutions (Digital real estate services)",
       title: "HR Recruiter",
       start: "Oct 2024",
-      end: "Present",
+      end: null,
       achievements: [
         `Managed end-to-end IT recruitment using the "Who" methodology and active cold searches across hh.ru, LinkedIn, Habr, Getmatch, and X-Ray.`,
         "Directly interacted with C-suite stakeholders, managing talent mapping and maintaining vacancy pages via Notion.",
@@ -83,7 +55,7 @@ export const CV_DATA: CV = {
       company: "VERTICAL WE&I (Aparthotel Network)",
       title: "Recruitment Manager",
       start: "Oct 2024",
-      end: "Present",
+      end: null,
       achievements: [
         "Oversaw full-cycle recruitment for a 360-room capacity hotel, managing up to 20 simultaneous vacancies.",
         "Conducted headhunting, resume screening, and multi-stage interviews.",
@@ -171,4 +143,19 @@ export const CV_DATA: CV = {
     "Figma",
     "Bitrix / Talantix",
   ],
+  ui: {
+    htmlLang: "en",
+    titleSuffix: "CV",
+    mainAriaLabel: "CV content",
+    sectionAbout: "About",
+    sectionWork: "Work Experience",
+    sectionEducation: "Education",
+    sectionSkills: "Skills",
+    present: "Present",
+    employmentPeriodLabel: "Employment period",
+    locationAriaLabel: "Location",
+    printBefore: "Press",
+    printAfter: "to print my CV",
+    photoAlt: "Elena Makueva profile photo",
+  },
 };

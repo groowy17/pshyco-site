@@ -1,5 +1,5 @@
 ---
-import {CV_DATA} from '../data/cv';
+import type {CV} from "../data/cv.types";
 import LinkButton from "./common/LinkButton.astro";
 import LinkedIn from "./icons/LinkedIn.astro";
 import Email from "./icons/Email.astro";
@@ -10,7 +10,12 @@ import Badge from './common/Badge.astro';
 import {Image} from 'astro:assets'
 import avatarImage from '../assets/avatar.jpeg';
 
-const {name, about, contact, location, locationLink} = CV_DATA;
+interface Props {
+  cv: CV;
+}
+
+const {cv} = Astro.props;
+const {name, about, contact, location, locationLink, ui} = cv;
 ---
 <header class="flex items-center justify-between">
     <div class="flex-1 space-y-1.5">
@@ -25,7 +30,7 @@ const {name, about, contact, location, locationLink} = CV_DATA;
                href={locationLink}
                target="_blank"
                rel="noopener noreferrer"
-               aria-label={`Location: ${location}`}>
+               aria-label={`${ui.locationAriaLabel}: ${location}`}>
                 <Globe class="size-3"/>
                 {location}
             </a>
@@ -62,6 +67,6 @@ const {name, about, contact, location, locationLink} = CV_DATA;
     </div>
     <span class="relative flex shrink-0 overflow-hidden rounded-xl h-28 w-[150px]"
           aria-hidden="true">
-        <Image class="h-full w-full" alt={`${name}'s profile picture`} src={avatarImage}/>
+        <Image class="h-full w-full" alt={ui.photoAlt} src={avatarImage}/>
     </span>
 </header>
