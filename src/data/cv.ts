@@ -15,7 +15,7 @@ export const CV_DATA: CV = {
   location: "St. Petersburg, Russia",
   locationLink: "https://www.google.com/maps/place/Saint+Petersburg",
   about: "Tech recruitment & executive search",
-  summary: `Dynamic HR Professional with 10+ years of experience in full-cycle
+  summary: `HR Professional with 10+ years of experience in full-cycle
       recruitment, talent mapping, and employee adaptation (IT, Real Estate,
       Hospitality). Proven track record of closing Middle+/Senior technical and
       managerial roles using advanced sourcing techniques (X-Ray, Boolean) and

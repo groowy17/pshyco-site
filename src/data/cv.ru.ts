@@ -1,4 +1,4 @@
-import type {CV} from "./cv.types";
+import type { CV } from "./cv.types";
 
 export const CV_DATA_RU: CV = {
   name: "Елена Макуева",
@@ -6,7 +6,7 @@ export const CV_DATA_RU: CV = {
   location: "Санкт-Петербург, Россия",
   locationLink: "https://www.google.com/maps/place/Saint+Petersburg",
   about: "Подбор в IT и руководящие роли",
-  summary: `Динамичный HR-специалист с более чем 10 годами опыта в полном цикле
+  summary: `HR-специалист с более чем 10 годами опыта в полном цикле
       подбора, картировании талантов и адаптации сотрудников (IT, недвижимость,
       гостеприимство). Закрываю вакансии уровня Middle+/Senior по техническим и
       управленческим профилям с сильным сорсингом (X-Ray, Boolean) и методологией
